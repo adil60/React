@@ -1,26 +1,47 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
 const heading = React.createElement(
-    "h1",
-    {
-      id: "title",
-    },
-    "Heading 1"
+  "h1",
+  { className: "heading" },
+);
+const Title = () => {
+  return <h1>This is the title component </h1>;
+};
+const Body = () => {
+  return (
+    <div>
+      <h2>This is the body component</h2>
+    </div>
   );
-  const heading2 = React.createElement(
-    "h2",
-    {
-      id: "title",
-    },
-    "Heading 2"
-  );
-  const container = React.createElement(
-    "div",
-    {
-      id: "container",
-    },
-    [heading, heading2]
-  );
-  console.log(heading);
-  const root = ReactDOM.createRoot(document.getElementById("root"));
-  //passing a react element inside the root
-  //async defer
-  root.render(container);
+};
+const Page = () => {
+  return (
+    <div>
+      {heading}
+      <Body />
+      <Title />
+    </div>)
+}
+
+const HeaderElement = () => {
+  return (<h1>This is H1 tag</h1>)
+}
+
+const Head = () => {
+  return (
+    <div>
+      <div className="header">
+        <img src={require("./assests/bird-logo.jpg")} alt="logo" className="logo"></img>
+        <input type="search" placeholder="Search..." className="search-bar"></input>
+        <img src={require("./assests/user-icon.png")} className="user-icon" alt="user" />
+      </div>
+    </div>
+  )
+}
+
+
+
+root.render(<Head></Head>);
