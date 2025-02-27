@@ -1,54 +1,26 @@
-import resList from "../utils/mockData";
 import RestaurantCard from "./RestaurantCard";
-import { useState } from "react";
-
-
-// let listOfRestaurants = [
-//     {
-//         "info": {
-//           "id": "804529",
-//           "name": "Dfc Bakery And Food Court",
-//           "cloudinaryImageId": "60a8b98fc9d14de1acff6cad0731923b",
-//           "costForTwo": "₹300 for two",
-//           "cuisines": ["Bakery","Cakes and Pastries", "Desserts", "Pizzas", "Chinese", "Fast Food"],
-//           "avgRating": 4.1,
-//           "sla": {
-//             "deliveryTime": 13,
-//           },
-//         }
-//       },
-//       {
-//         "info": {
-//           "id": "804526",
-//           "name": "KFC",
-//           "cloudinaryImageId": "60a8b98fc9d14de1acff6cad0731923b",
-//           "costForTwo": "₹400 for two",
-//           "cuisines": ["Bakery","Cakes and Pastries", "Desserts", "Pizzas"],
-//           "avgRating": 3.9,
-//           "sla": {
-//             "deliveryTime": 23,
-//           },
-//         }
-//       },
-//       {
-//         "info": {
-//           "id": "802526",
-//           "name": "Mc D",
-//           "cloudinaryImageId": "60a8b98fc9d14de1acff6cad0731923b",
-//           "costForTwo": "₹500 for two",
-//           "cuisines": ["Fast Food","Cakes and Pastries", "Desserts", "Pizzas"],
-//           "avgRating": 4.4,
-//           "sla": {
-//             "deliveryTime": 25,
-//           },
-//         }
-//       },
-// ]
-
-
+import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
-    const [ listOfRestaurants, setListOfRestaurants] = useState(resList);
+    const [ listOfRestaurants, setListOfRestaurants] = useState([]);
+    const  [search,setSearch] = useState("");
+    const [originalList , setOriginalList] = useState([]);
+    useEffect( ()=> {
+      fetchData();
+    },[] );
+
+    const fetchData = async () => {
+      const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.7188054&lng=79.15732249999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+      const json = await data.json();
+      console.log(json);
+      setOriginalList(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
+      setListOfRestaurants(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
+    }
+
+    if(listOfRestaurants.length==0){
+      return <Shimmer />;
+    }
     
     return (
       <div className="body">
@@ -58,10 +30,21 @@ const Body = () => {
             setListOfRestaurants(filteredList);
             console.log(listOfRestaurants);
           }  } >Top Rated Restaurants</button>
+          <div>
+          <input type="search" className="search" placeholder="Search here" value={search}
+          onChange={ (event)=> {
+            console.log(event.target.value);
+            setSearch(event.target.value);
+          }   } />
+          <button onClick={() => {
+             const searchFilter = listOfRestaurants.filter( (res)=> res.info.name.toLowerCase().includes(search.toLowerCase()))
+             setOriginalList(searchFilter); 
+          }}> Search</button>
+          </div>
         </div>
         <div className="res-container">
           {
-            listOfRestaurants.map((restaurant) =>   <RestaurantCard key={restaurant.info.id} resData={restaurant} />)
+            originalList.map((restaurant) =>   <RestaurantCard key={restaurant.info.id} resData={restaurant} />)
           }
         </div>
       </div>
