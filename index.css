@@ -46,7 +46,7 @@
   margin: 5px;
 }
 
-.res-card:hover{
+.res-card:hover {
   border: 1px solid black;
   cursor: pointer;
 }
@@ -69,7 +69,7 @@
   cursor: pointer;
 }
 
-.filter{
+.filter {
   display: flex;
   justify-content: space-between;
 }
@@ -88,4 +88,12 @@
 
 .login {
   padding: 20px;
+}
+
+.details {
+  border-radius: 20px;
+  padding: 10px;
+  width: 400px;
+  border: 1px solid black;
+  margin: 10px
 }
