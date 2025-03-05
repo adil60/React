@@ -1,10 +1,18 @@
-const About = () => {
-    return (
-        <div>
-            <h1>About Us</h1>
-            <h2>This is my App</h2>
-        </div>
-    )
+import User from "./UserFunctionComponent";
+import React from "react";
+
+class About extends React.Component {
+
+    render() {
+        return (
+            <div>
+                <h1>About Us</h1>
+
+                <User />
+            </div>
+        )
+    }
+
 }
 
 export default About;
