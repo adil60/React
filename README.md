@@ -27,3 +27,6 @@ Two types of import/export
     import {Component } from "./Component.js"
   
   We can use named export with named export.
+
+
+  Create useParams hook in a custom way by my own or to use localStorge and sessionStorage
