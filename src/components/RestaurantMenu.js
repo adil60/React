@@ -14,7 +14,7 @@ const RestaurantMenu = () => {
 
     console.log(resInfo);
     const { name, avgRating, costForTwoMessage, cuisines } = resInfo?.cards[2]?.card?.card?.info;
-    const menu = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards;
+    const menu = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards;
 
     return (
         <div className="restaurantMenu">
