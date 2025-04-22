@@ -5,12 +5,7 @@ const User = () => {
 
     useEffect( ()=> {
         fetchData();
-        const timer =  setInterval( () =>{
-            console.log("Set Interval")
-        } ,1000)
-
         return() => {
-            clearInterval(timer);
             console.log("Function Ended"); 
         }
     },[] );

@@ -1,14 +1,16 @@
-import { useState } from "react";
+import {  useState,useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnilneStatus";
+import userContext from "../utils/userContext";
 
 export const Header = () => {
 
     const [btnName , setBtnName] = useState("Login");
     const onlineStatus = useOnlineStatus();
+    const {userName} = useContext(userContext);
  
     return (
-      <div className="flex justify-between shadow-lg bg-pink-200 sm:bg-green-200 lg:bg-amber-200">
+      <div className="flex justify-between shadow-lg bg-pink-200 sm:bg-blue-200 lg:bg-green-200">
         <div className="logo-container">
           <img className="w-24 bg-pink-200" src={require("../../assests/bird-logo.jpg")} alt="logo" />
         </div>
@@ -25,6 +27,7 @@ export const Header = () => {
             <button className="login" onClick={()=> {
               btnName==="Login" ? setBtnName("Logout") : setBtnName("Login")}
               }>{btnName}</button>
+              <li className="px-4">{userName} </li>
           </ul>
         </div>
       </div>
