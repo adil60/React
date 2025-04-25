@@ -5,7 +5,7 @@ import userContext from "../utils/userContext";
 const RestaurantCard = (props) => {
   const { resData } = props;
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } = resData?.info;
-  const { userName,age } = useContext(userContext);
+  const { userName } = useContext(userContext);
 
   return (
     <div className="p-4 m-4 w-52 h-auto border bg-gray-100 hover:bg-gray-200">

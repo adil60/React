@@ -5,8 +5,6 @@ const RestaurantCategory = (props) => {
   const { card } = props.category.card;
   const { isActive,showItem,index} = props;
 
-  console.log(showItem);
-
   const onToggle = (num) => {
     showItem(num);
     console.log(num);

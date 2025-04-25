@@ -30,3 +30,16 @@ Two types of import/export
 
 
   Create useParams hook in a custom way by my own or to use localStorge and sessionStorage
+
+
+- Two types of Routing in web apps
+    1. Client Side Routing
+    2. Server Side Routing
+
+- Redux Toolkit
+    - Install @reduxjs/toolkit and react-redux
+    - Build redux store
+    - Connect our store to our app
+    - Create cartSlice
+    - dispatch(Action)
+    - Selector
