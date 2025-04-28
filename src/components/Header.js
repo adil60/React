@@ -12,7 +12,7 @@ export const Header = () => {
     const cartItems =  useSelector( (store) =>  store.cart.items);
  
     return (
-      <div className="flex justify-between shadow-lg bg-pink-200 sm:bg-blue-200 lg:bg-green-200">
+      <div className="flex justify-between shadow-lg">
         <div className="logo-container">
           <img className="w-28 h-28 bg-pink-200" 
           // src={require("../../assests/bird-logo.jpg")}

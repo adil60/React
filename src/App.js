@@ -11,6 +11,7 @@ import userContext from "./utils/userContext";
 import appStore from "./store/appStore";
 import { Provider } from "react-redux";
 import Cart from "./components/Cart";
+// import Maps from "./components/Maps";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -24,7 +25,6 @@ const AppLayout = () => {
     const data = {
       userName: "Adil Raza"
     }
-
     setInfo(data.userName)
   }, [])
 
